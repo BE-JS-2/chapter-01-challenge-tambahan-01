@@ -249,9 +249,14 @@ console.log(transfromToString([])) // expected output: []
 
 function countMe(arr) {
   const obj = {}
-  return arr.map((d, i, a) => {
-    // a.filter(d => )
+  arr.forEach(d => {
+    if (!obj[d]) {
+      obj[d] = 1;
+    } else {
+      obj[d] += 1
+    }
   })
+  return obj;
 }
 
 console.log(countMe(['Sofi', 'Riko', 'Sofi', 'Sam', 'Sam', 'Lila']));
