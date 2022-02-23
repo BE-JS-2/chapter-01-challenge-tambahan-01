@@ -10,7 +10,7 @@
 
 
  function formASentence(array) {
-
+  return array.join(' ')
 }
 
 
@@ -29,7 +29,7 @@ console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // 
  */
 
 function reverseString(str) {
-
+  return str.split('').reverse().join('')
 }
 
 console.log(reverseString('Javascript')) // expected output: "tpircsavaJ"
@@ -47,7 +47,8 @@ console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
  */
 
 function countWords(str) {
-
+  const matches = str.match(/[\w\d\’\'-]+/gi)
+  return matches ? matches.length : 0
 }
 
 console.log(countWords('I love coding')) // expected output: 3
@@ -65,7 +66,9 @@ console.log(countWords('')) // expected output: 0
  * Lengkapi function untuk mengubah menit menjadi detik
  */
 function converseMinute(str) {
-
+  const pecah = str.split(':')
+  const hasil = (+pecah[0] * 60) + +pecah[1] 
+  return hasil
 }
 
 console.log(converseMinute('01:12')) // expected output: 72
@@ -82,7 +85,11 @@ console.log(converseMinute('07:45')) // expected output: 465
  */
 
 function removeAllString(arr) {
+  let hasil = arr.filter(e => {
+    return typeof e !== 'string';
+  })
 
+  return hasil
 }
 
 console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
@@ -113,7 +120,11 @@ console.log(removeAllString([1, true, null])) // expected output: [1, true, null
  */
 
  function graduates (students) {
-
+  // const result = {};
+  // students = students.filter((student) => student.score > 75);
+  // student.forEach(element => {
+    
+  // });
  }
 
 console.log(graduates([
