@@ -211,7 +211,7 @@ console.log(graduates([])); //{}
 
 
 function transfromToString(arr) {
-
+  return arr.map(d => (typeof d === "number") ? d.toString() : d)
 }
 
 console.log(transfromToString([true, 1, 9])) // expected output: [true, "1", "9"]
