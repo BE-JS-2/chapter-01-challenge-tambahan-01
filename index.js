@@ -238,7 +238,13 @@ console.log(transfromToString([])); // expected output: []
  * Lengkapi function berikut untuk menghitung elemen-elemen pada array
  */
 
-function countMe(arr) {}
+function countMe(arr) {
+  const result = {};
+  arr.forEach(function (item) {
+    result[item] = (result[item] || 0) + 1;
+  });
+  return result;
+}
 
 console.log(countMe(["Sofi", "Riko", "Sofi", "Sam", "Sam", "Lila"]));
 // { Sofi: 2, Riko: 1, Sam: 2, Lila: 1 }
