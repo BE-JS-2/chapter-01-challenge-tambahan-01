@@ -266,16 +266,19 @@ function sorting(arrNumber) {
 }
 
 function getTotal(arrNumber) {
-  const counts = {};
-  return arrNumber.forEach(function (x) {
-    counts[x] = (counts[x] || 0) + 1;
+  const result = {};
+  arrNumber.forEach(function (item) {
+    result[item] = (result[item] || 0) + 1;
   });
+  return result;
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
   var listSort = sorting(arrNumber);
   var countHighest = getTotal(listSort);
-  return countHighest;
+  return `angka paling besar adalah ${listSort.pop()} dan jumlah kemunculan sebanyak ${Object.values(
+    countHighest
+  ).pop()} kali`;
 }
 
 console.log(mostFrequentLargestNumbers([2, 8, 4, 6, 8, 5, 8, 4]));
