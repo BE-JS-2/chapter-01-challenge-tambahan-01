@@ -10,7 +10,7 @@
 
 
  function formASentence(array) {
-
+   return array.join(" ")
 }
 
 
@@ -28,7 +28,9 @@ console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // 
  * Lengkapi function untuk membalik kata yang dimasukkan sebagai parameter
  */
 
-function reverseString(str) {
+function reverseString(str) {  
+  
+  return str.split("").reverse().join("");
 
 }
 
@@ -47,7 +49,7 @@ console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
  */
 
 function countWords(str) {
-
+  return str.split(' ').filter(function(n) { return n != '' }).length;
 }
 
 console.log(countWords('I love coding')) // expected output: 3
@@ -65,6 +67,11 @@ console.log(countWords('')) // expected output: 0
  * Lengkapi function untuk mengubah menit menjadi detik
  */
 function converseMinute(str) {
+  
+  const minute = str.split(':')[0];
+  const second = str.split(':')[1];
+
+  return +minute * 60 + +second;
 
 }
 
@@ -82,6 +89,8 @@ console.log(converseMinute('07:45')) // expected output: 465
  */
 
 function removeAllString(arr) {
+  
+  return arr.filter(d => typeof d !== "string")
 
 }
 
