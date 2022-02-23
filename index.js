@@ -70,13 +70,15 @@ console.log(countWords('')) // expected output: 0
 /**
  * Lengkapi function untuk mengubah menit menjadi detik
  */
-// function converseMinute(str) {
+function converseMinute(str) {
+  str = str.split(":");
+  result = Number(str[0]) * 60 + Number(str[1])
+  return (result);
+}
 
-// }
-
-// console.log(converseMinute('01:12')) // expected output: 72
-// console.log(converseMinute('10:30')) // expected output: 630
-// console.log(converseMinute('07:45')) // expected output: 465
+console.log(converseMinute('01:12')) // expected output: 72
+console.log(converseMinute('10:30')) // expected output: 630
+console.log(converseMinute('07:45')) // expected output: 465
 
 
 /**
@@ -88,8 +90,7 @@ console.log(countWords('')) // expected output: 0
  */
 
 function removeAllString(arr) {
-
-
+  return arr.filter((item) => typeof item != "string");
 }
 
 console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
