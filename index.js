@@ -325,7 +325,7 @@ function changeMe(arr) {
             firstname: arr[i][0],
             lastname: arr[i][1],
             gender: arr[i][2],
-            age: arr[i][3] || "Invalid Birth Year",
+            age: 2020 - +arr[i][3] || "Invalid Birth Year",
         }
         temp.push(obj);
     }
