@@ -7,10 +7,11 @@
  * Lengkapi function berikut yang bertugas untuk menggabungkan elemen-element pada array yang diterima sebagai parameter
  * menjadi suatu kalimat.
  */
-
+console.log("jawaban no 1");
 
  function formASentence(array) {
-
+  let gabungKata = array.join(" ")
+  return gabungKata 
 }
 
 
@@ -18,7 +19,7 @@ console.log(formASentence(['Aku', 'mau', 'pergi', 'ke', 'sekolah'])) // expected
 console.log(formASentence(['I', 'love', 'coding'])) // expected output: "I love coding"
 console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // expected output: "Aku sedang belajar BE Javascript"
 
-
+console.log("-----------------");
 /**
  * SOAL NO. 2
  */
@@ -27,14 +28,16 @@ console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // 
 /**
  * Lengkapi function untuk membalik kata yang dimasukkan sebagai parameter
  */
-
+console.log("jawaban no 2");
 function reverseString(str) {
-
+  let reverse = str.split('').reverse().join('')
+  return reverse
 }
 
 console.log(reverseString('Javascript')) // expected output: "tpircsavaJ"
 console.log(reverseString('Binar Academy')) // expected output: "ymedacA raniB"
 console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
+console.log("-----------------------------");
 
 
 /**
@@ -45,16 +48,17 @@ console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
 /**
  * Lengkapi function berikut untuk menghitung jumlah kata yang ada di dalam suatu kalimat
  */
-
+console.log("jawaban no 3");
 function countWords(str) {
-
+    let index = str.lenght ? str.split(' ').length: 0; 
+    return index
 }
 
 console.log(countWords('I love coding')) // expected output: 3
 console.log(countWords('Saya ada seorang Binarian')) // expected output: 4
 console.log(countWords('Saya')) // expected output: 1
 console.log(countWords('')) // expected output: 0
-
+console.log("------------------------------");
 
 /**
  * SOAL NO. 4
@@ -64,13 +68,19 @@ console.log(countWords('')) // expected output: 0
 /**
  * Lengkapi function untuk mengubah menit menjadi detik
  */
+console.log("jawaban no 4");
 function converseMinute(str) {
+  let menit = str.split(':')[0];
+  let detik = str.split(':')[1];
 
+  return + menit * 60 + +detik;
 }
 
 console.log(converseMinute('01:12')) // expected output: 72
 console.log(converseMinute('10:30')) // expected output: 630
 console.log(converseMinute('07:45')) // expected output: 465
+
+console.log("--------------------------------");
 
 
 /**
@@ -80,16 +90,17 @@ console.log(converseMinute('07:45')) // expected output: 465
 /**
  * Lengkapi function berikut untuk menghilangkan semua elemen dalam array yang berupa string
  */
-
+console.log("jawaban no 5");
 function removeAllString(arr) {
-
+ let string = arr.filter( index => (typeof index !== "string"))
+ return string
 }
 
 console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
 console.log(removeAllString(["mangkok"])) // expected output: []
 console.log(removeAllString([1, true, null])) // expected output: [1, true, null]
 
-
+console.log("---------------------");
 /**
  * SOAL NO. 6
  */
