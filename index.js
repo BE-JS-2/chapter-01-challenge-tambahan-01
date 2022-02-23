@@ -319,17 +319,29 @@ console.log(mostFrequentLargestNumbers([]));
  */
 
 function changeMe(arr) {
-    let temp = [];
-    for (let i = 0; i < arr.length; i++) {
-        let obj = {
-            firstname: arr[i][0],
-            lastname: arr[i][1],
-            gender: arr[i][2],
-            age: 2020 - +arr[i][3] || "Invalid Birth Year",
+    if (arr.length === 0) {
+        console.log(`""`);
+    } else {
+        let content = [];
+        let title = [];
+        let j = 1;
+        for (let i = 0; i < arr.length; i++) {
+            let obj = {
+                firstname: arr[i][0],
+                lastname: arr[i][1],
+                gender: arr[i][2],
+                age: 2022 - +arr[i][3] || "Invalid Birth Year",
+            }
+            content.push(obj);
+            title.push(`${j}. ${obj.firstname} ${obj.lastname}`);
+            j++;
         }
-        temp.push(obj);
+        for (let i = 0; i < title.length; i++) {
+            console.log(title[i]);
+            console.log(content[i]);
+        }
     }
-    console.log(temp);
+
 }
 
 // TEST CASES
