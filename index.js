@@ -278,10 +278,19 @@ console.log(countMe([ 1, 15, 9, 10, 8, 1, 12, 15, 10, 3 ]));
 function sorting(arrNumber) {
   // code di sini
   // boleh menggunakan built-in function sorting
+  return arrNumber.sort().reverse()
 }
 
 function getTotal(arrNumber) {
   // code di sini
+  const obj = []
+  arrNumber.forEach((d, i, a) => {
+    if (d !== a[i+1]) {
+      obj.push({ number: d, total: a.filter(dt => dt === d).length})
+    }
+  })
+
+  return obj.length ? `angka paling besar adalah ${obj[0].number} dan jumlah kemunculan sebanyak ${obj[0].total} kali` : [];
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
