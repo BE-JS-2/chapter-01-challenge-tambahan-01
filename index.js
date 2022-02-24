@@ -105,21 +105,16 @@ console.log(removeAllString([1, true, null])); // expected output: [1, true, nul
  */
 
 function graduates(students) {
-  // [
-  //   { name: "Dimitri", score: 90, class: "foxes" },
-  //   { name: "Alexei", score: 85, class: "wolves" },
-  //   { name: "Anastasia", score: 78, class: "wolves" },
-  // ];
   const result = {};
   students = students.filter((student) => student.score > 75);
-  for (let index = 0; index < students.length; index++) {
-    result[students[index].class] = [
-      {
-        name: students[index].name,
-        score: students[index].score,
-      },
-    ];
-  }
+  students.forEach((item) => {
+    let kelas = Object.keys(result);
+    if (kelas.includes(item.class)) {
+      result[item.class].push({ name: item.name, score: item.score });
+    } else {
+      result[item.class] = [{ name: item.name, score: item.score }];
+    }
+  });
   return result;
 }
 
@@ -276,9 +271,13 @@ function getTotal(arrNumber) {
 function mostFrequentLargestNumbers(arrNumber) {
   var listSort = sorting(arrNumber);
   var countHighest = getTotal(listSort);
-  return `angka paling besar adalah ${listSort.pop()} dan jumlah kemunculan sebanyak ${Object.values(
-    countHighest
-  ).pop()} kali`;
+  if (arrNumber.length > 0) {
+    return `angka paling besar adalah ${listSort.pop()} dan jumlah kemunculan sebanyak ${Object.values(
+      countHighest
+    ).pop()} kali`;
+  } else {
+    return " ";
+  }
 }
 
 console.log(mostFrequentLargestNumbers([2, 8, 4, 6, 8, 5, 8, 4]));
