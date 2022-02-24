@@ -9,8 +9,8 @@
  */
 
 
- function formASentence(array) {
-
+function formASentence(array) {
+  return array.join(' ')
 }
 
 
@@ -29,7 +29,7 @@ console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // 
  */
 
 function reverseString(str) {
-
+  return Array.from(str).reverse().join('')
 }
 
 console.log(reverseString('Javascript')) // expected output: "tpircsavaJ"
@@ -47,7 +47,7 @@ console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
  */
 
 function countWords(str) {
-
+  return (str.length) ? str.split(' ').length : 0;
 }
 
 console.log(countWords('I love coding')) // expected output: 3
@@ -65,7 +65,10 @@ console.log(countWords('')) // expected output: 0
  * Lengkapi function untuk mengubah menit menjadi detik
  */
 function converseMinute(str) {
+  const minute = str.split(':')[0];
+  const second = str.split(':')[1];
 
+  return +minute * 60 + +second;
 }
 
 console.log(converseMinute('01:12')) // expected output: 72
@@ -82,7 +85,7 @@ console.log(converseMinute('07:45')) // expected output: 465
  */
 
 function removeAllString(arr) {
-
+  return arr.filter(d => typeof d !== "string")
 }
 
 console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
@@ -112,9 +115,36 @@ console.log(removeAllString([1, true, null])) // expected output: [1, true, null
  * }
  */
 
- function graduates (students) {
-
- }
+function graduates (students) {
+  const std = {}
+  const class1 = [];
+  const class2 = [];
+  const class3 = [];
+  students.filter(d => d.score >= 75).map(d => {
+    if (d.class === "foxes") {
+      class1.push({
+        name: d.name,
+        score: d.score
+      })
+      std[d.class] = class1
+    } else if (d.class === "wolves") {
+      class2.push({
+        name: d.name,
+        score: d.score
+      })
+      std[d.class] = class2
+    } else if (d.class === "tigers") {
+      class3.push({
+        name: d.name,
+        score: d.score
+      })
+      std[d.class] = class3
+    } else {
+      
+    }
+  })
+  return std;
+}
 
 console.log(graduates([
   {
@@ -202,7 +232,7 @@ console.log(graduates([])); //{}
 
 
 function transfromToString(arr) {
-
+  return arr.map(d => (typeof d === "number") ? d.toString() : d)
 }
 
 console.log(transfromToString([true, 1, 9])) // expected output: [true, "1", "9"]
@@ -218,7 +248,15 @@ console.log(transfromToString([])) // expected output: []
 
 
 function countMe(arr) {
-
+  const obj = {}
+  arr.forEach(d => {
+    if (!obj[d]) {
+      obj[d] = 1;
+    } else {
+      obj[d] += 1
+    }
+  })
+  return obj;
 }
 
 console.log(countMe(['Sofi', 'Riko', 'Sofi', 'Sam', 'Sam', 'Lila']));
@@ -240,10 +278,19 @@ console.log(countMe([ 1, 15, 9, 10, 8, 1, 12, 15, 10, 3 ]));
 function sorting(arrNumber) {
   // code di sini
   // boleh menggunakan built-in function sorting
+  return arrNumber.sort().reverse()
 }
 
 function getTotal(arrNumber) {
   // code di sini
+  const obj = []
+  arrNumber.forEach((d, i, a) => {
+    if (d !== a[i+1]) {
+      obj.push({ number: d, total: a.filter(dt => dt === d).length})
+    }
+  })
+
+  return obj.length ? `angka paling besar adalah ${obj[0].number} dan jumlah kemunculan sebanyak ${obj[0].total} kali` : [];
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
