@@ -9,8 +9,9 @@
  */
 
 
- function formASentence(array) {
-
+function formASentence(array) {
+  let y = array.join(" ");
+  return y;
 }
 
 
@@ -29,7 +30,10 @@ console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // 
  */
 
 function reverseString(str) {
-
+  let newString = "";
+  for (let i = str.length - 1; i >= 0; i--) { 
+    newString += str[i];}
+  return newString;
 }
 
 console.log(reverseString('Javascript')) // expected output: "tpircsavaJ"
@@ -47,6 +51,8 @@ console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
  */
 
 function countWords(str) {
+  let banyak_kata = str.length
+  return banyak_kata;
 
 }
 
@@ -65,7 +71,9 @@ console.log(countWords('')) // expected output: 0
  * Lengkapi function untuk mengubah menit menjadi detik
  */
 function converseMinute(str) {
-
+  str = str.split(":");
+  result = Number(str[0]) * 60 + Number(str[1])
+  return (result);
 }
 
 console.log(converseMinute('01:12')) // expected output: 72
@@ -82,7 +90,7 @@ console.log(converseMinute('07:45')) // expected output: 465
  */
 
 function removeAllString(arr) {
-
+  return arr.filter((item) => typeof item != "string");
 }
 
 console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
@@ -284,7 +292,7 @@ function changeMe(arr) {
  
 }
 
-// TEST CASES
+TEST CASES
 changeMe([['Christ', 'Evans', 'Male', 1982], ['Robert', 'Downey', 'Male']]);
 // 1. Christ Evans:
 // { firstName: 'Christ',
