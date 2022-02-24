@@ -11,6 +11,8 @@
 
  function formASentence(array) {
 
+  let result ;
+  return array.join(' ')
 }
 
 
@@ -29,6 +31,7 @@ console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // 
  */
 
 function reverseString(str) {
+  return Array.from(str).reverse().join('')
 
 }
 
@@ -47,7 +50,7 @@ console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
  */
 
 function countWords(str) {
-
+  return str.split(" ").length;
 }
 
 console.log(countWords('I love coding')) // expected output: 3
@@ -64,13 +67,18 @@ console.log(countWords('')) // expected output: 0
 /**
  * Lengkapi function untuk mengubah menit menjadi detik
  */
-function converseMinute(str) {
+  function converseMinute(str) {
+    let sec = str.split(':')
 
-}
+  let convert = parseInt(str) * 60
+  let result = convert + parseInt(sec[1])
+  return result
+  }
+  
 
-console.log(converseMinute('01:12')) // expected output: 72
-console.log(converseMinute('10:30')) // expected output: 630
-console.log(converseMinute('07:45')) // expected output: 465
+  console.log(converseMinute('01:12')) // expected output: 72
+  console.log(converseMinute('10:30')) // expected output: 630
+  console.log(converseMinute('07:45')) // expected output: 465
 
 
 /**
@@ -82,7 +90,8 @@ console.log(converseMinute('07:45')) // expected output: 465
  */
 
 function removeAllString(arr) {
-
+  return arr.filter(x => typeof x != "string");
+    
 }
 
 console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
@@ -202,7 +211,7 @@ console.log(graduates([])); //{}
 
 
 function transfromToString(arr) {
-
+  return arr.map(d => (typeof d === "number") ? d.toString() : d)
 }
 
 console.log(transfromToString([true, 1, 9])) // expected output: [true, "1", "9"]
@@ -218,7 +227,7 @@ console.log(transfromToString([])) // expected output: []
 
 
 function countMe(arr) {
-
+  return Object.entries(arr.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {})).sort((a,b) => b[1]-a[1])
 }
 
 console.log(countMe(['Sofi', 'Riko', 'Sofi', 'Sam', 'Sam', 'Lila']));
@@ -240,10 +249,14 @@ console.log(countMe([ 1, 15, 9, 10, 8, 1, 12, 15, 10, 3 ]));
 function sorting(arrNumber) {
   // code di sini
   // boleh menggunakan built-in function sorting
+  arrNumber = arrNumber.sort((a, b) => a - b);
 }
 
 function getTotal(arrNumber) {
   // code di sini
+  let sum=0;
+    arrNumber.map(val=>sum+=val)
+    return sum
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
