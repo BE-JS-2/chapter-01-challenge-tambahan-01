@@ -2,76 +2,90 @@
  * SOAL NO. 1
  */
 
-
 /**
  * Lengkapi function berikut yang bertugas untuk menggabungkan elemen-element pada array yang diterima sebagai parameter
  * menjadi suatu kalimat.
  */
 
-
- function formASentence(array) {
-
+function formASentence(array) {
+  let sentence = "";
+  for (let i = 0; i < array.length; i++) {
+    sentence += array[i] + " ";
+  }
+  return sentence;
 }
 
-
-console.log(formASentence(['Aku', 'mau', 'pergi', 'ke', 'sekolah'])) // expected output: "Aku mau pergi ke sekolah"
-console.log(formASentence(['I', 'love', 'coding'])) // expected output: "I love coding"
-console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // expected output: "Aku sedang belajar BE Javascript"
-
+console.log(formASentence(["Aku", "mau", "pergi", "ke", "sekolah"])); // expected output: "Aku mau pergi ke sekolah"
+console.log(formASentence(["I", "love", "coding"])); // expected output: "I love coding"
+console.log(formASentence(["Aku", "sedang", "belajar", "BE", "Javascript"])); // expected output: "Aku sedang belajar BE Javascript"
 
 /**
  * SOAL NO. 2
  */
-
 
 /**
  * Lengkapi function untuk membalik kata yang dimasukkan sebagai parameter
  */
 
 function reverseString(str) {
-
+  let awal = str;
+  let sentence = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    sentence += awal[i];
+  }
+  return sentence;
 }
 
-console.log(reverseString('Javascript')) // expected output: "tpircsavaJ"
-console.log(reverseString('Binar Academy')) // expected output: "ymedacA raniB"
-console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
-
+console.log(reverseString("Javascript")); // expected output: "tpircsavaJ"
+console.log(reverseString("Binar Academy")); // expected output: "ymedacA raniB"
+console.log(reverseString("Botol aqua")); // expected output: "auqa lotoB"
 
 /**
  * SOAL NO. 3
  */
-
 
 /**
  * Lengkapi function berikut untuk menghitung jumlah kata yang ada di dalam suatu kalimat
  */
 
 function countWords(str) {
-
+  let count = 1;
+  if (str.length === 0) {
+    return --count;
+  } else {
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === " ") {
+        count++;
+      }
+    }
+  }
+  return count;
 }
 
-console.log(countWords('I love coding')) // expected output: 3
-console.log(countWords('Saya ada seorang Binarian')) // expected output: 4
-console.log(countWords('Saya')) // expected output: 1
-console.log(countWords('')) // expected output: 0
-
+console.log(countWords("I love coding")); // expected output: 3
+console.log(countWords("Saya ada seorang Binarian")); // expected output: 4
+console.log(countWords("Saya")); // expected output: 1
+console.log(countWords("")); // expected output: 0
 
 /**
  * SOAL NO. 4
  */
 
-
 /**
  * Lengkapi function untuk mengubah menit menjadi detik
  */
 function converseMinute(str) {
+  let pecah = str.split(":");
+  let menit = +pecah[0] * 60;
+  let detik = +pecah[1];
+  let hasil = menit + detik;
 
+  return hasil;
 }
 
-console.log(converseMinute('01:12')) // expected output: 72
-console.log(converseMinute('10:30')) // expected output: 630
-console.log(converseMinute('07:45')) // expected output: 465
-
+console.log(converseMinute("01:12")); // expected output: 72
+console.log(converseMinute("10:30")); // expected output: 630
+console.log(converseMinute("07:45")); // expected output: 465
 
 /**
  * SOAL NO. 5
@@ -82,13 +96,20 @@ console.log(converseMinute('07:45')) // expected output: 465
  */
 
 function removeAllString(arr) {
-
+  let newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] !== "string") {
+      newArray.push(arr[i]);
+    }
+  }
+  return newArray;
 }
 
-console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
-console.log(removeAllString(["mangkok"])) // expected output: []
-console.log(removeAllString([1, true, null])) // expected output: [1, true, null]
-
+console.log(
+  removeAllString([undefined, "coding", 1, ["love", 3], null, false])
+); // expected output: [undefined, 1, ["love", 3], null, false]
+console.log(removeAllString(["mangkok"])); // expected output: []
+console.log(removeAllString([1, true, null])); // expected output: [1, true, null]
 
 /**
  * SOAL NO. 6
@@ -111,33 +132,48 @@ console.log(removeAllString([1, true, null])) // expected output: [1, true, null
  * <class>: [] //NOTE: Jika tidak ada student yang lulus, class ini akan diisi oleh array kosong
  * }
  */
+//not solve
+function graduates(students) {
+  const lulus = students.filter((element) => element >= 75);
+  const result = {};
 
- function graduates (students) {
+  lulus.forEach((element) => {
+    let kelas = Object.keys(result);
 
- }
+    if (kelas.includes(element.class)) {
+      result[element.class].push({ name: element.name, score: element.score });
+    } else {
+      result[element.class] = [{ name: element.name, score: element.score }];
+    }
+    // return kelas;
+  });
+  return lulus;
+}
 
-console.log(graduates([
-  {
-    name: 'Dimitri',
-    score: 90,
-    class: 'foxes'
-  },
-  {
-    name: 'Alexei',
-    score: 85,
-    class: 'wolves'
-  },
-  {
-    name: 'Sergei',
-    score: 74,
-    class: 'foxes'
-  },
-  {
-    name: 'Anastasia',
-    score: 78,
-    class: 'wolves'
-  }
-]));
+console.log(
+  graduates([
+    {
+      name: "Dimitri",
+      score: 90,
+      class: "foxes",
+    },
+    {
+      name: "Alexei",
+      score: 85,
+      class: "wolves",
+    },
+    {
+      name: "Sergei",
+      score: 74,
+      class: "foxes",
+    },
+    {
+      name: "Anastasia",
+      score: 78,
+      class: "wolves",
+    },
+  ])
+);
 
 // {
 //   foxes: [
@@ -149,33 +185,35 @@ console.log(graduates([
 //   ]
 // }
 
-console.log(graduates([
-  {
-    name: 'Alexander',
-    score: 100,
-    class: 'foxes'
-  },
-  {
-    name: 'Alisa',
-    score: 76,
-    class: 'wolves'
-  },
-  {
-    name: 'Vladimir',
-    score: 92,
-    class: 'foxes'
-  },
-  {
-    name: 'Albert',
-    score: 71,
-    class: 'wolves'
-  },
-  {
-    name: 'Viktor',
-    score: 80,
-    class: 'tigers'
-  }
-]));
+console.log(
+  graduates([
+    {
+      name: "Alexander",
+      score: 100,
+      class: "foxes",
+    },
+    {
+      name: "Alisa",
+      score: 76,
+      class: "wolves",
+    },
+    {
+      name: "Vladimir",
+      score: 92,
+      class: "foxes",
+    },
+    {
+      name: "Albert",
+      score: 71,
+      class: "wolves",
+    },
+    {
+      name: "Viktor",
+      score: 80,
+      class: "tigers",
+    },
+  ])
+);
 
 // {
 //   foxes: [
@@ -190,9 +228,7 @@ console.log(graduates([
 //   ]
 // }
 
-
 console.log(graduates([])); //{}
-
 
 // SOAL NO. 7
 
@@ -200,15 +236,21 @@ console.log(graduates([])); //{}
  * Lengkapi function untuk mengubah elemen-elemen dalam array yang memiliki tipe data number menjadi tipe data string
  */
 
-
 function transfromToString(arr) {
-
+  let newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === "number") {
+      newArray.push(arr[i].toString());
+    } else {
+      newArray.push(arr[i]);
+    }
+  }
+  return newArray;
 }
 
-console.log(transfromToString([true, 1, 9])) // expected output: [true, "1", "9"]
-console.log(transfromToString([undefined, 9, "erase"])) // expected output: [undefined, "9", "erase"]
-console.log(transfromToString([])) // expected output: []
-
+console.log(transfromToString([true, 1, 9])); // expected output: [true, "1", "9"]
+console.log(transfromToString([undefined, 9, "erase"])); // expected output: [undefined, "9", "erase"]
+console.log(transfromToString([])); // expected output: []
 
 // SOAL NO. 8
 
@@ -216,22 +258,24 @@ console.log(transfromToString([])) // expected output: []
  * Lengkapi function berikut untuk menghitung elemen-elemen pada array
  */
 
-
 function countMe(arr) {
-
+  let hasil = {};
+  for (let i = 0; i < arr.length; i++) {
+    hasil[arr[i]] = arr.filter((x) => x === arr[i]).length;
+  }
+  return hasil;
 }
 
-console.log(countMe(['Sofi', 'Riko', 'Sofi', 'Sam', 'Sam', 'Lila']));
+console.log(countMe(["Sofi", "Riko", "Sofi", "Sam", "Sam", "Lila"]));
 // { Sofi: 2, Riko: 1, Sam: 2, Lila: 1 }
 
-console.log(countMe([ 1, 15, 9, 10, 8, 1, 12, 15, 10, 3 ]));
+console.log(countMe([1, 15, 9, 10, 8, 1, 12, 15, 10, 3]));
 // { '1': 2, '3': 1, '8': 1, '9': 1, '10': 2, '12': 1, '15': 2 }
-
 
 // SOAL NO. 9
 
 /**
- * Implementasikan function sorting dan getTotal untuk mendapatkan angka yang paling besar dan mengetahui 
+ * Implementasikan function sorting dan getTotal untuk mendapatkan angka yang paling besar dan mengetahui
  * berapa kali angka tersebut muncul di dalam arrNumber.
  * Dilarang mengubah mengubah 2 lines di dalam function mostFrequentLargestNumbers yaitu lines:
  * let listSort = sorting(arrNumber)
@@ -240,22 +284,32 @@ console.log(countMe([ 1, 15, 9, 10, 8, 1, 12, 15, 10, 3 ]));
 function sorting(arrNumber) {
   // code di sini
   // boleh menggunakan built-in function sorting
+  return arrNumber.sort();
 }
 
 function getTotal(arrNumber) {
   // code di sini
+  let hasil = {};
+  for (let i = 0; i < arrNumber.length; i++) {
+    hasil[arrNumber[i]] = arrNumber.filter((x) => x === arrNumber[i]).length;
+  }
+  return hasil;
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
   var listSort = sorting(arrNumber);
+  // return listSort;
   var countHighest = getTotal(listSort);
   return countHighest;
+  // return countHighest;
 }
 
 console.log(mostFrequentLargestNumbers([2, 8, 4, 6, 8, 5, 8, 4]));
 //'angka paling besar adalah 8 dan jumlah kemunculan sebanyak 3 kali'
 
-console.log(mostFrequentLargestNumbers([122, 122, 130, 100, 135, 100, 135, 150]));
+console.log(
+  mostFrequentLargestNumbers([122, 122, 130, 100, 135, 100, 135, 150])
+);
 //'angka paling besar adalah 150 dan jumlah kemunculan sebanyak 1 kali'
 
 console.log(mostFrequentLargestNumbers([1, 1, 1, 1]));
@@ -263,7 +317,6 @@ console.log(mostFrequentLargestNumbers([1, 1, 1, 1]));
 
 console.log(mostFrequentLargestNumbers([]));
 //''
-
 
 /**
  * SOAL NO. 10
@@ -281,11 +334,40 @@ console.log(mostFrequentLargestNumbers([]));
  */
 
 function changeMe(arr) {
- 
+  let objek = [];
+  if (arr.length !== 0) {
+    for (let i = 0; i < arr.length; i++) {
+      if (!arr[i][3]) {
+        objek.push({
+          firstName: arr[i][0],
+          lastName: arr[i][1],
+          gender: arr[i][2],
+          age: "Invalid Birth Year",
+        });
+      } else {
+        objek.push({
+          firstName: arr[i][0],
+          lastName: arr[i][1],
+          gender: arr[i][2],
+          age: arr[i][3],
+        });
+      }
+    }
+  } else {
+    return "";
+  }
+  // console.log(objek);
+  for (let i = 0; i < objek.length; i++) {
+    console.log(`${i + 1}. ${objek[i].firstName} ${objek[i].lastName}:`);
+    console.log(objek[i]);
+  }
 }
 
 // TEST CASES
-changeMe([['Christ', 'Evans', 'Male', 1982], ['Robert', 'Downey', 'Male']]);
+changeMe([
+  ["Christ", "Evans", "Male", 1982],
+  ["Robert", "Downey", "Male"],
+]);
 // 1. Christ Evans:
 // { firstName: 'Christ',
 //   lastName: 'Evans',
