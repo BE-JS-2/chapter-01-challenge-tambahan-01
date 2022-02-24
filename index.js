@@ -9,8 +9,12 @@
  */
 
 
- function formASentence(array) {
-
+function formASentence(array) {
+    let sentence = "";
+    array.forEach(e => {
+        sentence += e + " ";
+    })
+    return sentence.trim();
 }
 
 
@@ -29,7 +33,11 @@ console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // 
  */
 
 function reverseString(str) {
-
+    let result = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        result += str[i];
+    }
+    return result;
 }
 
 console.log(reverseString('Javascript')) // expected output: "tpircsavaJ"
@@ -47,7 +55,10 @@ console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
  */
 
 function countWords(str) {
-
+    if (str === '' || str == undefined || str == null) {
+        return 0
+    }
+    return str.split(" ").length;
 }
 
 console.log(countWords('I love coding')) // expected output: 3
@@ -65,7 +76,9 @@ console.log(countWords('')) // expected output: 0
  * Lengkapi function untuk mengubah menit menjadi detik
  */
 function converseMinute(str) {
-
+    let minute = str.split(':')[0];
+    let second = str.split(':')[1];
+    return +minute * 60 + +second;
 }
 
 console.log(converseMinute('01:12')) // expected output: 72
@@ -82,7 +95,13 @@ console.log(converseMinute('07:45')) // expected output: 465
  */
 
 function removeAllString(arr) {
-
+    let temp = [];
+    arr.forEach(e => {
+        if (typeof e !== 'string') {
+            temp.push(e);
+        }
+    })
+    return temp;
 }
 
 console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
@@ -112,31 +131,30 @@ console.log(removeAllString([1, true, null])) // expected output: [1, true, null
  * }
  */
 
- function graduates (students) {
+function graduates(students) {
 
- }
+}
 
-console.log(graduates([
-  {
-    name: 'Dimitri',
-    score: 90,
-    class: 'foxes'
-  },
-  {
-    name: 'Alexei',
-    score: 85,
-    class: 'wolves'
-  },
-  {
-    name: 'Sergei',
-    score: 74,
-    class: 'foxes'
-  },
-  {
-    name: 'Anastasia',
-    score: 78,
-    class: 'wolves'
-  }
+console.log(graduates([{
+        name: 'Dimitri',
+        score: 90,
+        class: 'foxes'
+    },
+    {
+        name: 'Alexei',
+        score: 85,
+        class: 'wolves'
+    },
+    {
+        name: 'Sergei',
+        score: 74,
+        class: 'foxes'
+    },
+    {
+        name: 'Anastasia',
+        score: 78,
+        class: 'wolves'
+    }
 ]));
 
 // {
@@ -149,32 +167,31 @@ console.log(graduates([
 //   ]
 // }
 
-console.log(graduates([
-  {
-    name: 'Alexander',
-    score: 100,
-    class: 'foxes'
-  },
-  {
-    name: 'Alisa',
-    score: 76,
-    class: 'wolves'
-  },
-  {
-    name: 'Vladimir',
-    score: 92,
-    class: 'foxes'
-  },
-  {
-    name: 'Albert',
-    score: 71,
-    class: 'wolves'
-  },
-  {
-    name: 'Viktor',
-    score: 80,
-    class: 'tigers'
-  }
+console.log(graduates([{
+        name: 'Alexander',
+        score: 100,
+        class: 'foxes'
+    },
+    {
+        name: 'Alisa',
+        score: 76,
+        class: 'wolves'
+    },
+    {
+        name: 'Vladimir',
+        score: 92,
+        class: 'foxes'
+    },
+    {
+        name: 'Albert',
+        score: 71,
+        class: 'wolves'
+    },
+    {
+        name: 'Viktor',
+        score: 80,
+        class: 'tigers'
+    }
 ]));
 
 // {
@@ -202,7 +219,16 @@ console.log(graduates([])); //{}
 
 
 function transfromToString(arr) {
-
+    if (arr.length === 0) return [];
+    let temp = [];
+    arr.forEach(e => {
+        if (e === undefined || e === null || e === true || e === false) {
+            temp.push(e);
+        } else {
+            temp.push(e.toString());
+        }
+    })
+    return temp;
 }
 
 console.log(transfromToString([true, 1, 9])) // expected output: [true, "1", "9"]
@@ -218,13 +244,25 @@ console.log(transfromToString([])) // expected output: []
 
 
 function countMe(arr) {
-
+    let temp = {};
+    let count = 1;
+    arr.sort();
+    arr.forEach(e => {
+        if (!(e in temp)) {
+            count = 1;
+            temp[e] = count;
+        } else {
+            count += 1;
+            temp[e] = count;
+        }
+    })
+    return temp;
 }
 
 console.log(countMe(['Sofi', 'Riko', 'Sofi', 'Sam', 'Sam', 'Lila']));
 // { Sofi: 2, Riko: 1, Sam: 2, Lila: 1 }
 
-console.log(countMe([ 1, 15, 9, 10, 8, 1, 12, 15, 10, 3 ]));
+console.log(countMe([1, 15, 9, 10, 8, 1, 12, 15, 10, 3]));
 // { '1': 2, '3': 1, '8': 1, '9': 1, '10': 2, '12': 1, '15': 2 }
 
 
@@ -238,18 +276,18 @@ console.log(countMe([ 1, 15, 9, 10, 8, 1, 12, 15, 10, 3 ]));
  * let countHighest = getTotal(listSort)
  */
 function sorting(arrNumber) {
-  // code di sini
-  // boleh menggunakan built-in function sorting
+    // code di sini
+    // boleh menggunakan built-in function sorting
 }
 
 function getTotal(arrNumber) {
-  // code di sini
+    // code di sini
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
-  var listSort = sorting(arrNumber);
-  var countHighest = getTotal(listSort);
-  return countHighest;
+    var listSort = sorting(arrNumber);
+    var countHighest = getTotal(listSort);
+    return countHighest;
 }
 
 console.log(mostFrequentLargestNumbers([2, 8, 4, 6, 8, 5, 8, 4]));
@@ -281,11 +319,36 @@ console.log(mostFrequentLargestNumbers([]));
  */
 
 function changeMe(arr) {
- 
+    if (arr.length === 0) {
+        console.log(`""`);
+    } else {
+        let content = [];
+        let title = [];
+        let j = 1;
+        for (let i = 0; i < arr.length; i++) {
+            let obj = {
+                firstname: arr[i][0],
+                lastname: arr[i][1],
+                gender: arr[i][2],
+                age: 2022 - +arr[i][3] || "Invalid Birth Year",
+            }
+            content.push(obj);
+            title.push(`${j}. ${obj.firstname} ${obj.lastname}`);
+            j++;
+        }
+        for (let i = 0; i < title.length; i++) {
+            console.log(title[i]);
+            console.log(content[i]);
+        }
+    }
+
 }
 
 // TEST CASES
-changeMe([['Christ', 'Evans', 'Male', 1982], ['Robert', 'Downey', 'Male']]);
+changeMe([
+    ['Christ', 'Evans', 'Male', 1982],
+    ['Robert', 'Downey', 'Male']
+]);
 // 1. Christ Evans:
 // { firstName: 'Christ',
 //   lastName: 'Evans',
