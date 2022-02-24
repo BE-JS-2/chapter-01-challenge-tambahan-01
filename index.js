@@ -2,76 +2,71 @@
  * SOAL NO. 1
  */
 
-
 /**
  * Lengkapi function berikut yang bertugas untuk menggabungkan elemen-element pada array yang diterima sebagai parameter
  * menjadi suatu kalimat.
  */
 
-
- function formASentence(array) {
-
+function formASentence(array) {
+  return array.join(" ");
 }
 
-
-console.log(formASentence(['Aku', 'mau', 'pergi', 'ke', 'sekolah'])) // expected output: "Aku mau pergi ke sekolah"
-console.log(formASentence(['I', 'love', 'coding'])) // expected output: "I love coding"
-console.log(formASentence(['Aku', 'sedang', 'belajar', 'BE', 'Javascript'])) // expected output: "Aku sedang belajar BE Javascript"
-
+console.log(formASentence(["Aku", "mau", "pergi", "ke", "sekolah"])); // expected output: "Aku mau pergi ke sekolah"
+console.log(formASentence(["I", "love", "coding"])); // expected output: "I love coding"
+console.log(formASentence(["Aku", "sedang", "belajar", "BE", "Javascript"])); // expected output: "Aku sedang belajar BE Javascript"
 
 /**
  * SOAL NO. 2
  */
-
 
 /**
  * Lengkapi function untuk membalik kata yang dimasukkan sebagai parameter
  */
 
 function reverseString(str) {
-
+  let joinedCharacters = [];
+  for (let index = str.length - 1; index >= 0; index--) {
+    joinedCharacters.push(str[index]);
+  }
+  return joinedCharacters.join("");
 }
 
-console.log(reverseString('Javascript')) // expected output: "tpircsavaJ"
-console.log(reverseString('Binar Academy')) // expected output: "ymedacA raniB"
-console.log(reverseString('Botol aqua')) // expected output: "auqa lotoB"
-
+console.log(reverseString("Javascript")); // expected output: "tpircsavaJ"
+console.log(reverseString("Binar Academy")); // expected output: "ymedacA raniB"
+console.log(reverseString("Botol aqua")); // expected output: "auqa lotoB"
 
 /**
  * SOAL NO. 3
  */
-
 
 /**
  * Lengkapi function berikut untuk menghitung jumlah kata yang ada di dalam suatu kalimat
  */
 
 function countWords(str) {
-
+  return str.length > 0 ? str.split(" ").length : 0;
 }
 
-console.log(countWords('I love coding')) // expected output: 3
-console.log(countWords('Saya ada seorang Binarian')) // expected output: 4
-console.log(countWords('Saya')) // expected output: 1
-console.log(countWords('')) // expected output: 0
-
+console.log(countWords("I love coding")); // expected output: 3
+console.log(countWords("Saya ada seorang Binarian")); // expected output: 4
+console.log(countWords("Saya")); // expected output: 1
+console.log(countWords("")); // expected output: 0
 
 /**
  * SOAL NO. 4
  */
 
-
 /**
  * Lengkapi function untuk mengubah menit menjadi detik
  */
 function converseMinute(str) {
-
+  const arr = str.split(":");
+  return Number(arr[0]) * 60 + Number(arr[1]);
 }
 
-console.log(converseMinute('01:12')) // expected output: 72
-console.log(converseMinute('10:30')) // expected output: 630
-console.log(converseMinute('07:45')) // expected output: 465
-
+console.log(converseMinute("01:12")); // expected output: 72
+console.log(converseMinute("10:30")); // expected output: 630
+console.log(converseMinute("07:45")); // expected output: 465
 
 /**
  * SOAL NO. 5
@@ -82,13 +77,14 @@ console.log(converseMinute('07:45')) // expected output: 465
  */
 
 function removeAllString(arr) {
-
+  return arr.filter((element) => typeof element != "string");
 }
 
-console.log(removeAllString([undefined, "coding", 1, ["love", 3], null, false])) // expected output: [undefined, 1, ["love", 3], null, false]
-console.log(removeAllString(["mangkok"])) // expected output: []
-console.log(removeAllString([1, true, null])) // expected output: [1, true, null]
-
+console.log(
+  removeAllString([undefined, "coding", 1, ["love", 3], null, false])
+); // expected output: [undefined, 1, ["love", 3], null, false]
+console.log(removeAllString(["mangkok"])); // expected output: []
+console.log(removeAllString([1, true, null])); // expected output: [1, true, null]
 
 /**
  * SOAL NO. 6
@@ -112,32 +108,48 @@ console.log(removeAllString([1, true, null])) // expected output: [1, true, null
  * }
  */
 
- function graduates (students) {
+function graduates(students) {
+  let classObj = {};
+  const uniqueClassNames = [
+    ...new Set(students.map((student) => student.class)),
+  ];
+  const muridLulus = students.filter((student) => student.score > 75);
 
- }
+  uniqueClassNames.forEach((element) => {
+    classObj[element] = muridLulus
+      .filter((student) => student.class === element)
+      .map((std) => ({
+        name: std.name,
+        score: std.score,
+      }));
+  });
+  return classObj;
+}
 
-console.log(graduates([
-  {
-    name: 'Dimitri',
-    score: 90,
-    class: 'foxes'
-  },
-  {
-    name: 'Alexei',
-    score: 85,
-    class: 'wolves'
-  },
-  {
-    name: 'Sergei',
-    score: 74,
-    class: 'foxes'
-  },
-  {
-    name: 'Anastasia',
-    score: 78,
-    class: 'wolves'
-  }
-]));
+console.log(
+  graduates([
+    {
+      name: "Dimitri",
+      score: 90,
+      class: "foxes",
+    },
+    {
+      name: "Alexei",
+      score: 85,
+      class: "wolves",
+    },
+    {
+      name: "Sergei",
+      score: 74,
+      class: "foxes",
+    },
+    {
+      name: "Anastasia",
+      score: 78,
+      class: "wolves",
+    },
+  ])
+);
 
 // {
 //   foxes: [
@@ -149,33 +161,35 @@ console.log(graduates([
 //   ]
 // }
 
-console.log(graduates([
-  {
-    name: 'Alexander',
-    score: 100,
-    class: 'foxes'
-  },
-  {
-    name: 'Alisa',
-    score: 76,
-    class: 'wolves'
-  },
-  {
-    name: 'Vladimir',
-    score: 92,
-    class: 'foxes'
-  },
-  {
-    name: 'Albert',
-    score: 71,
-    class: 'wolves'
-  },
-  {
-    name: 'Viktor',
-    score: 80,
-    class: 'tigers'
-  }
-]));
+console.log(
+  graduates([
+    {
+      name: "Alexander",
+      score: 100,
+      class: "foxes",
+    },
+    {
+      name: "Alisa",
+      score: 76,
+      class: "wolves",
+    },
+    {
+      name: "Vladimir",
+      score: 92,
+      class: "foxes",
+    },
+    {
+      name: "Albert",
+      score: 71,
+      class: "wolves",
+    },
+    {
+      name: "Viktor",
+      score: 80,
+      class: "tigers",
+    },
+  ])
+);
 
 // {
 //   foxes: [
@@ -190,9 +204,7 @@ console.log(graduates([
 //   ]
 // }
 
-
 console.log(graduates([])); //{}
-
 
 // SOAL NO. 7
 
@@ -200,15 +212,15 @@ console.log(graduates([])); //{}
  * Lengkapi function untuk mengubah elemen-elemen dalam array yang memiliki tipe data number menjadi tipe data string
  */
 
-
 function transfromToString(arr) {
-
+  return arr.map((element) =>
+    typeof element === "number" ? element.toString() : element
+  );
 }
 
-console.log(transfromToString([true, 1, 9])) // expected output: [true, "1", "9"]
-console.log(transfromToString([undefined, 9, "erase"])) // expected output: [undefined, "9", "erase"]
-console.log(transfromToString([])) // expected output: []
-
+console.log(transfromToString([true, 1, 9])); // expected output: [true, "1", "9"]
+console.log(transfromToString([undefined, 9, "erase"])); // expected output: [undefined, "9", "erase"]
+console.log(transfromToString([])); // expected output: []
 
 // SOAL NO. 8
 
@@ -216,34 +228,39 @@ console.log(transfromToString([])) // expected output: []
  * Lengkapi function berikut untuk menghitung elemen-elemen pada array
  */
 
-
 function countMe(arr) {
-
+  const uniqueArray = [...new Set(arr)];
+  let classObj = {};
+  uniqueArray.forEach(
+    (element) =>
+      (classObj[element] = arr.filter((elm) => elm === element).length)
+  );
+  return classObj;
 }
 
-console.log(countMe(['Sofi', 'Riko', 'Sofi', 'Sam', 'Sam', 'Lila']));
+console.log(countMe(["Sofi", "Riko", "Sofi", "Sam", "Sam", "Lila"]));
 // { Sofi: 2, Riko: 1, Sam: 2, Lila: 1 }
 
-console.log(countMe([ 1, 15, 9, 10, 8, 1, 12, 15, 10, 3 ]));
+console.log(countMe([1, 15, 9, 10, 8, 1, 12, 15, 10, 3]));
 // { '1': 2, '3': 1, '8': 1, '9': 1, '10': 2, '12': 1, '15': 2 }
-
 
 // SOAL NO. 9
 
 /**
- * Implementasikan function sorting dan getTotal untuk mendapatkan angka yang paling besar dan mengetahui 
+ * Implementasikan function sorting dan getTotal untuk mendapatkan angka yang paling besar dan mengetahui
  * berapa kali angka tersebut muncul di dalam arrNumber.
  * Dilarang mengubah mengubah 2 lines di dalam function mostFrequentLargestNumbers yaitu lines:
  * let listSort = sorting(arrNumber)
  * let countHighest = getTotal(listSort)
  */
 function sorting(arrNumber) {
-  // code di sini
-  // boleh menggunakan built-in function sorting
+  return arrNumber.sort((a, b) => b - a);
 }
 
 function getTotal(arrNumber) {
-  // code di sini
+  const total = arrNumber.filter((num) => num === arrNumber[0]).length;
+  const output = `Angka paling besar adalah ${arrNumber[0]} dan jumlah kemunculan sebanyak ${total} kali`;
+  return output;
 }
 
 function mostFrequentLargestNumbers(arrNumber) {
@@ -255,7 +272,9 @@ function mostFrequentLargestNumbers(arrNumber) {
 console.log(mostFrequentLargestNumbers([2, 8, 4, 6, 8, 5, 8, 4]));
 //'angka paling besar adalah 8 dan jumlah kemunculan sebanyak 3 kali'
 
-console.log(mostFrequentLargestNumbers([122, 122, 130, 100, 135, 100, 135, 150]));
+console.log(
+  mostFrequentLargestNumbers([122, 122, 130, 100, 135, 100, 135, 150])
+);
 //'angka paling besar adalah 150 dan jumlah kemunculan sebanyak 1 kali'
 
 console.log(mostFrequentLargestNumbers([1, 1, 1, 1]));
@@ -263,7 +282,6 @@ console.log(mostFrequentLargestNumbers([1, 1, 1, 1]));
 
 console.log(mostFrequentLargestNumbers([]));
 //''
-
 
 /**
  * SOAL NO. 10
@@ -281,11 +299,23 @@ console.log(mostFrequentLargestNumbers([]));
  */
 
 function changeMe(arr) {
- 
+  const newArr = arr.map((element) => ({
+    firstName: `${element[0]}`,
+    lastName: `${element[1]}`,
+    gender: `${element[2]}`,
+    age: element[3] === undefined ? "Invalid Birth Year" : 2020 - element[3],
+  }));
+  newArr.forEach((element, index) => {
+    console.log(`${index + 1}. ${element.firstName} ${element.lastName}:`);
+    console.log(element);
+  });
 }
 
 // TEST CASES
-changeMe([['Christ', 'Evans', 'Male', 1982], ['Robert', 'Downey', 'Male']]);
+changeMe([
+  ["Christ", "Evans", "Male", 1982],
+  ["Robert", "Downey", "Male"],
+]);
 // 1. Christ Evans:
 // { firstName: 'Christ',
 //   lastName: 'Evans',
