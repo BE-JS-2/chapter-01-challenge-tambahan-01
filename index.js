@@ -9,7 +9,7 @@
  */
 
 
- function formASentence(array) {
+function formASentence(array) {
 
 }
 
