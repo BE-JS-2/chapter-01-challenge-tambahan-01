@@ -65,8 +65,7 @@ console.log(countWords('')) // expected output: 0
  * Lengkapi function untuk mengubah menit menjadi detik
  */
 function converseMinute(str) {
-  const minute = str.split(':')[0];
-  const second = str.split(':')[1];
+  const [minute, second] = str.split(':');
 
   return +minute * 60 + +second;
 }
